@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirmith Portfolio</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="./img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <div id="preloader">
+    </div>
+    <a href="#home" class="scroll-top">
+        <i class="bx bx-up-arrow-alt"></i>
+    </a>
+    <header>
+        <div class="nav container" style="max-width: 100%;">
+            <a href="#" class="logo">Nirmith</a>
+            <ul class="navbar">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="menu-icon" style="margin-top: 20px;">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </header>
+    <section class="home container" id="home">
+        <div class="home-content">
+            <div class="home-img">
+                <img src="img/profile2.png" alt="Nirmith">
+            </div>
+            <div class="home-text">
+                <h3>Hello</h3>
+                <h2>I'm <span class="color">Nirmith</span></h2>
+                <p>I'm a <span class="color">Computer Science</span> student with a passion for <br> <span class="color">cybersec</span> and <span class="color">web development</span>
+                <br> Here is a bit more <span class="color">about me</span>.
+                </p>
+                <div class="social">
+                    <a href="https://www.linkedin.com/in/nirmith-dalmeida-81ab2418a/"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://github.com/NirmithVictor"><i class='bx bxl-github'></i></a>
+                    <a href="https://stackoverflow.com/users/15980907/jay"><i class='bx bxl-stack-overflow'></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about container" id="about">
+        <h2 class="heading">About</h2>
+        <div class="about-content">
+            <div class="about-data">
+                <span>About me</span>
+                <h2>
+                    Cyber Security and Web Developer Enthusiast
+                </h2>
+                <a href="Resume.pdf" class="btn" download="">
+                    Download CV <i class='bx bx-download'></i>
+                </a>
+            </div>
+            <div class="about-text">
+                <p>Hello! I am Nirmith D'Almeida. CyberSec and Web Developer Enthusiast.</p>
+                <p>I like to dance, game, code and play music in my free time.  I also like to hang out with strangers and learn about people's cultures</p>
+                <p>Connect with me</p>
+            </div>
+        </div>
+    </section>
+    <section class="portfolio" id="projects" style="padding:0rem;">
+        <div class="containers">
+            <div class="row">
+                <div class="section-title text-center">
+                    <h1>Project Filter</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="filter-buttons">
+                    <ul id="filter-btns" class="filter-btns">
+                        <li id="all" class="all" class="active" data-target="all">ALL</li>
+                        <li id="front" class="front" data-target="Html_css">FRONTEND</li>
+                        <li id="full" class="full" data-target="Javascript">FULL STACK</li>
+                        <li id="python" class="python" data-target="Python">PYTHON</li>
+                        <li id="certs" class="certs" data-target="Certs">CERTIFICATIONS</li>
+                        <li id="oop" class="oop" data-target="">OOP</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row" style = "height: 75vh;overflow-x: auto;margin: 0 auto;">
+                <div class="portfolio-gallery" id="portfolio-gallery" style="background-color: #9e9e9ec7;border-radius: 10px;padding: 20px;">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container reviews" id="testimonials">
+        <h2 class="heading">Testimonials</h2>
+        <div class="reviews-content swiper">
+            <div class="swiper-wrapper" id="swip">
+                
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section class="contact container" id="contact">
+        <h2 class="heading">Contact Us</h2>
+        <form action="" class="contact-form" id="contact-form">
+            <input type="text" placeholder="Your Name" class="name" required>
+            <input type="email" name="" id="" placeholder="Your email" class="email" required>
+            <textarea name="" id="" cols="30" rows="10" placeholder="Message........" required class="message"></textarea>
+            <input type="submit" value="Send" class="send-btn">
+        </form>
+    </section>
+    
+    <section class="footer container" id="footer" style="background: black;max-width: 100%;">
+        <div class="social">
+            <a href="mailto:nirmithdalmeida@hotmail.com"><i class='bx bxs-envelope'></i></a>
+            <a href="https://www.linkedin.com/in/nirmith-dalmeida-81ab2418a/"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://github.com/NirmithVictor"><i class='bx bxl-github'></i></a>
+            <a href="https://stackoverflow.com/users/15980907/jay"><i class='bx bxl-stack-overflow'></i></a>
+        </div>
+        <p>&#169; Nirmith Victor 2022</p>
+    </section>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("7-iJou_mtFeypOg1K");
+        })();
+    </script>
+    <script src="./js/swiper-bundle.min.js"></script>
+    <script src="./data/data.js"></script>
+    <script src="./data/reviews.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+</html>
