@@ -82,5 +82,5 @@ let datas=[
         "iType":"Full_Stack",
         "iLink":"https://github.com/HH2-0/Captive-Chat",
         "iImage":"./img/C-Chat.png"
-    }
+    },
 ]
