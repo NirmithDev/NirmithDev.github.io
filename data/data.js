@@ -66,15 +66,21 @@ let datas=[
         "iImage":"./img/coffee.png"
     },
     {
-        "iName":"Captive Chat",
+        "iName":"StoreLocator",
         "iType":"Full_Stack",
-        "iLink":"https://github.com/HH2-0/Captive-Chat",
-        "iImage":"./img/C-Chat.png"
+        "iLink":"https://github.com/NirmithVictor/StoreLocator",
+        "iImage":"./img/stores.png"
     },
     {
         "iName":"Space Invader",
         "iType":"Python",
         "iLink":"https://github.com/NirmithVictor/Python-space-invader-game",
         "iImage":"./img/invader.png"
+    },
+    {
+        "iName":"Captive Chat",
+        "iType":"Full_Stack",
+        "iLink":"https://github.com/HH2-0/Captive-Chat",
+        "iImage":"./img/C-Chat.png"
     },
 ]
