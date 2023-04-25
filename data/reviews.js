@@ -1,5 +1,13 @@
 let reviews =[
     {
+        "Name": "Nick Donato",
+        "Testimonial":"Nirmith was a very positive addition to the team as an intern. He took ownership of his tasks such as reviewing the automation failures and correcting them. He maintained a positive attitude throughout his term. He was provided with lots of training and feedback from the other test engineers and accepted and implemented their feedback into his work very well.  Overall, Nirmith did an excellent job during his internship at Ceridian as an Automation Test Engineer Intern.",
+        "LinkedIn":"https://www.linkedin.com/in/nick-donato-508975a5/",
+        "Mail":"nick.donato@ceridian.com",
+        "Organization":"Ceridian",
+        "Position":"Manager - Development"
+    },
+    {
         "Name":"Ali Sharif",
         "Testimonial":"Nirmith is the team leader type of person, he's always coming up with several ideas when it comes to tackling problems, maybe one too many ideas haha, he is always up to thinking outside the box that sometimes he may not see the answer right infront of him, but that's okay! This is a clear sign of a man who's passionate about what he does, a man who is curious about anything and everything, a man who doesn't quit until he succeeds. A hardworker by the definition, Nirmith is a joy to work with, sometimes he might need someone to step on the brakes, but most people need someone to step on the gas, and I'd say having too much speed in your field has very little cons and way too many pros.",
         "LinkedIn":"https://www.linkedin.com/in/ali-sharif-2a835716b/",
