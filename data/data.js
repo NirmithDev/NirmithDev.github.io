@@ -2,25 +2,25 @@ let datas=[
     {
         "iName":"MovieDB",
         "iType":"Full_Stack",
-        "iLink":"https://github.com/NirmithVictor/COMP2406-MOVIE-DB",
+        "iLink":"https://github.com/NirmithDev/COMP2406-MOVIE-DB",
         "iImage":"./img/movieDb.png"
     },
     {
         "iName":"Parallax",
         "iType":"Front_end",
-        "iLink":"https://github.com/NirmithVictor/parallax_Web",
+        "iLink":"https://github.com/NirmithDev/parallax_Web",
         "iImage":"./img/parallax.png"
     },
     {
         "iName":"Report Generator",
         "iType":"OOP",
-        "iLink":"https://github.com/NirmithVictor/Report-Generator",
+        "iLink":"https://github.com/NirmithDev/Report-Generator",
         "iImage":"./img/reportGen.png"
     },
     {
         "iName":"Library Management Sys",
         "iType":"Python",
-        "iLink":"https://github.com/NirmithVictor/3005-Project",
+        "iLink":"https://github.com/NirmithDev/3005-Project",
         "iImage":"./img/LMSystem.png"
     },
     {
@@ -68,13 +68,13 @@ let datas=[
     {
         "iName":"StoreLocator",
         "iType":"Full_Stack",
-        "iLink":"https://github.com/NirmithVictor/StoreLocator",
+        "iLink":"https://github.com/NirmithDev/StoreLocator",
         "iImage":"./img/stores.png"
     },
     {
         "iName":"Space Invader",
         "iType":"Python",
-        "iLink":"https://github.com/NirmithVictor/Python-space-invader-game",
+        "iLink":"https://github.com/NirmithDev/Python-space-invader-game",
         "iImage":"./img/invader.png"
     },
     {
