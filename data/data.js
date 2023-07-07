@@ -12,12 +12,6 @@ let datas=[
         "iImage":"./img/BlogSite.png"
     },
     {
-        "iName":"Parallax",
-        "iType":"Front_end",
-        "iLink":"https://github.com/NirmithDev/parallax_Web",
-        "iImage":"./img/parallax.png"
-    },
-    {
         "iName":"Report Generator",
         "iType":"OOP",
         "iLink":"https://github.com/NirmithDev/Report-Generator",
@@ -54,26 +48,14 @@ let datas=[
         "iImage":"./img/certs3.png"
     },
     {
-        "iName":"Weather",
-        "iType":"Front_end",
-        "iLink":"https://festive-dijkstra-33ccd1.netlify.app/",
-        "iImage":"./img/weather.png"
-    },
-    {
         "iName":"Portfolio",
         "iType":"Front_end",
         "iLink":"#",
         "iImage":"./img/portfolio.png"
     },
     {
-        "iName":"Coffee",
-        "iType":"Front_end",
-        "iLink":"https://nirmithcoffee.netlify.app/",
-        "iImage":"./img/coffee.png"
-    },
-    {
         "iName":"StoreLocator",
-        "iType":"Full_Stack",
+        "iType":"Front_end",
         "iLink":"https://github.com/NirmithDev/StoreLocator",
         "iImage":"./img/stores.png"
     },
