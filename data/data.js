@@ -6,6 +6,12 @@ let datas=[
         "iImage":"./img/movieDb.png"
     },
     {
+        "iName":"Blog Site",
+        "iType":"Full_Stack",
+        "iLink":"https://github.com/Circus-Group-Project/TheBrosBlogSite",
+        "iImage":"./img/C-Chat.png"
+    },
+    {
         "iName":"Parallax",
         "iType":"Front_end",
         "iLink":"https://github.com/NirmithDev/parallax_Web",
