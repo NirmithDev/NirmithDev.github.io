@@ -9,7 +9,7 @@ let datas=[
         "iName":"Blog Site",
         "iType":"Full_Stack",
         "iLink":"https://github.com/Circus-Group-Project/TheBrosBlogSite",
-        "iImage":"./img/C-Chat.png"
+        "iImage":"./img/BlogSite.png"
     },
     {
         "iName":"Parallax",
