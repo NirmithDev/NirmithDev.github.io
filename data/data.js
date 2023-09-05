@@ -24,6 +24,12 @@ let datas=[
         "iImage":"./img/LMSystem.png"
     },
     {
+        "iName":"Front End Development Library",
+        "iType":"Certs",
+        "iLink":"https://www.freecodecamp.org/certification/NirmithDAlmeida/front-end-development-libraries",
+        "iImage":"./img/certs4.png"
+    },
+    {
         "iName":"JavaScript Algorithms",
         "iType":"Certs",
         "iLink":"https://www.freecodecamp.org/certification/fcc520bbe1d-8ce5-4007-b31d-3fe885a52e10/javascript-algorithms-and-data-structures",
