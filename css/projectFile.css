@@ -1,0 +1,20 @@
+.nav-link::after {
+    content: ''; /* Initially, no content */
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-left: 5px solid black;
+    vertical-align: middle;
+    margin-left: 5px; /* Space between text and arrow */
+    transition: all 0.3s ease; /* Add smooth transition */
+}
+
+.nav-link:hover::after {
+    content: ''; /* Add arrow content on hover */
+    border-left: none;
+    border-right: 5px solid white; /* Change the direction of the arrow */
+}
+  
