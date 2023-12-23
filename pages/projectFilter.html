@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirmith Portfolio</title>
+    <link rel="stylesheet" href="../css/style2.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/projectFile.css">
+    <link rel="icon" href="../img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/swiper-bundle.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <div id="preloader">
+    </div>
+    <a href="#home" class="scroll-top">
+        <i class="bx bx-up-arrow-alt"></i>
+    </a>
+    <header>
+        <div class="nav container" style="max-width: 100%;">
+            <a href="#" class="logo">Nirmith</a>
+            <ul style="margin-top: 20px;">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+            </ul>
+        </div>
+    </header>   
+    <section class="portfolio" id="projects" style=" padding-top: 4rem;">
+        <div class="containers">
+            <div class="row">
+                <div class="section-title text-center">
+                    <h1>Project Filter</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="filter-buttons">
+                    <ul id="filter-btns" class="filter-btns">
+                        <li id="all" class="all" class="active" data-target="all">ALL</li>
+                        <li id="front" class="front" data-target="Html_css">FRONTEND</li>
+                        <li id="full" class="full" data-target="Javascript">FULL STACK</li>
+                        <li id="python" class="python" data-target="Python">PYTHON</li>
+                        <li id="certs" class="certs" data-target="Certs">CERTIFICATIONS</li>
+                        <li id="oop" class="oop" data-target="">OOP</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row" style = "height: 75vh;overflow-x: auto;margin: 0 auto;">
+                <div class="portfolio-gallery" id="portfolio-gallery" style="background-color: #9e9e9ec7;border-radius: 10px;padding: 20px;">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="../js/swiper-bundle.min.js"></script>
+    <script src="../data/data.js"></script>
+    <script src="../js/projectsFilter.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+</html>
