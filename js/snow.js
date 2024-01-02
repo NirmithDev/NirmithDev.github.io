@@ -11,15 +11,27 @@ const snowflakes = [];
 
 // Function to create snowflakes
 function createSnowflakes() {
-  for (let i = 0; i < 80; i++) {
-    snowflakes.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      radius: Math.random() * 3 + 1, // Random radius between 1 and 4
-      speed: Math.random() * 3 + 0.25, // Random speed between 1 and 4
-      opacity:  Math.random() * 0.8 + 0.2 // Random opacity between 0.5 and 1
-    });
-  }
+    if(canvas.width<800 || canvas.height <800){
+        for (let i = 0; i < 25; i++) {
+            snowflakes.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 3 + 1, // Random radius between 1 and 4
+            speed: Math.random() * 3 + 0.25, // Random speed between 1 and 4
+            opacity:  Math.random() * 0.8 + 0.2 // Random opacity between 0.5 and 1
+            });
+        }
+    }else{
+        for (let i = 0; i < 80; i++) {
+            snowflakes.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 3 + 1, // Random radius between 1 and 4
+            speed: Math.random() * 3 + 0.25, // Random speed between 1 and 4
+            opacity:  Math.random() * 0.8 + 0.2 // Random opacity between 0.5 and 1
+            });
+        }
+    }
 }
 
 // Function to draw snowflakes
