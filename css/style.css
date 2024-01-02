@@ -136,7 +136,7 @@ header{
 }
 
 .home-content{
-    position: relative;
+    /*position: relative;*/
     max-width: 600px;
     width: 100%;
     margin: auto;
