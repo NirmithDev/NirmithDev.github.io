@@ -63,8 +63,8 @@ header{
     margin: auto;
     width: 100%;
     padding: 30px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    /*margin-top: 20px;
+    margin-bottom: 20px;*/
 }
 
 #preloader{
@@ -414,8 +414,8 @@ font-size: 1.2rem;
     .container{
         margin: 0 auto;
         width: 90%;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        /*margin-top: 20px;
+        margin-bottom: 20px;*/
     }
     .nav{
         padding: 0px;
