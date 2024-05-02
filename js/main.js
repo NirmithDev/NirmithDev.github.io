@@ -91,24 +91,45 @@ function getReviews(){
     let at = document.getElementById("swip")
     re=''
     for(i=0;i<getReview.length;i++){
-        re+=`
-    <div class="swiper-slide">
-        <div class="review-box">
-            <i class="bx bxs-quote-right"></i>
-            <p class="review-text">
-                ${getReview[i].Testimonial}
-            </p>
-            <div class="review-profile">
-                <h2>${getReview[i].Name}</h2>
-                <span>${getReview[i].Organization} - ${getReview[i].Position}</span>
-                <div class="social" style="color: white;">
-                    <a href="${getReview[i].LinkedIn}"><i class='bx bxl-linkedin'></i></a>
-                    <a href="mailto:${getReview[i].Mail}"><i class='bx bxs-envelope'></i></a>
+        if(getReview[i].Mail==null){
+            re+=`
+            <div class="swiper-slide">
+                <div class="review-box">
+                    <i class="bx bxs-quote-right"></i>
+                    <p class="review-text">
+                        ${getReview[i].Testimonial}
+                    </p>
+                    <div class="review-profile">
+                        <h2>${getReview[i].Name}</h2>
+                        <span>${getReview[i].Organization} - ${getReview[i].Position}</span>
+                        <div class="social" style="color: white;">
+                            <a href="${getReview[i].LinkedIn}"><i class='bx bxl-linkedin'></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-        `
+                `
+        }else{
+            re+=`
+                <div class="swiper-slide">
+                    <div class="review-box">
+                        <i class="bx bxs-quote-right"></i>
+                        <p class="review-text">
+                            ${getReview[i].Testimonial}
+                        </p>
+                        <div class="review-profile">
+                            <h2>${getReview[i].Name}</h2>
+                            <span>${getReview[i].Organization} - ${getReview[i].Position}</span>
+                            <div class="social" style="color: white;">
+                                <a href="${getReview[i].LinkedIn}"><i class='bx bxl-linkedin'></i></a>
+                                <a href="mailto:${getReview[i].Mail}"><i class='bx bxs-envelope'></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    `
+        }
+        
     }
     at.innerHTML=re
 }
