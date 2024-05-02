@@ -3,9 +3,8 @@ let reviews =[
         "Name": "Nick Donato",
         "Testimonial":"Nirmith was a very positive addition to the team as an intern. He took ownership of his tasks such as reviewing the automation failures and correcting them. He maintained a positive attitude throughout his term. He was provided with lots of training and feedback from the other test engineers and accepted and implemented their feedback into his work very well.  Overall, Nirmith did an excellent job during his internship at Ceridian as an Automation Test Engineer Intern.",
         "LinkedIn":"https://www.linkedin.com/in/nick-donato-508975a5/",
-        "Mail":"nick.donato@ceridian.com",
-        "Organization":"Ceridian",
-        "Position":"Manager - Development"
+        "Organization":"EQ",
+        "Position":"Software Engineering Manager"
     },
     {
         "Name":"Ali Sharif",
@@ -13,7 +12,7 @@ let reviews =[
         "LinkedIn":"https://www.linkedin.com/in/ali-sharif-2a835716b/",
         "Mail":"sharifali1000@hotmail.com",
         "Organization":"Carleton University",
-        "Position":"Student"
+        "Position":"Alumni"
     },
     {
         "Name":"Soorya Balaji",
@@ -21,7 +20,7 @@ let reviews =[
         "LinkedIn":"https://www.linkedin.com/in/soorya-balaji-b176171b7/",
         "Mail":"soorya.balaji0903@gmail.com",
         "Organization":"Carleton University",
-        "Position":"Student"
+        "Position":"Alumni"
     },
     {
         "Name": "Vincent Babineau",
