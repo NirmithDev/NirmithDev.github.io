@@ -359,6 +359,9 @@ font-size: 1.2rem;
     background: var(--box-color);
     border-radius: 0.4rem;
 }
+.contact-form textarea{
+    resize: none;
+}
 
 .contact-form .send-btn{
     width: 120px;
