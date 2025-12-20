@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/style3.css">
     <link rel="stylesheet" href="css/projectFile.css">
     <link rel="stylesheet" href="css/snowAnimation.css">
+    <link rel="stylesheet" href="css/santaClaus.css">
     <link rel="icon" href="./img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -112,6 +113,43 @@
         </div>
         <p>&#169; Nirmith Victor 2022</p>
     </section>
+    <div id="santa-visitor" aria-hidden="true">
+        <svg viewBox="0 0 180 180" class="santa-svg">
+            <!-- Grip hand (near edge) -->
+            <circle class="hand grip" cx="18" cy="102" r="9"/>
+
+            <!-- Waving hand (moved farther away from face) -->
+            <g class="wave-hand">
+            <circle class="hand palm" cx="0" cy="0" r="11"/>
+            <circle class="hand finger" cx="-7" cy="-12" r="4"/>
+            <circle class="hand finger" cx="0"  cy="-14" r="4"/>
+            <circle class="hand finger" cx="7"  cy="-12" r="4"/>
+            </g>
+
+            <!-- Face -->
+            <circle cx="98" cy="90" r="44" fill="#ffccaa"/>
+
+            <!-- Hat -->
+            <path d="M54 83 C58 40, 132 35, 146 70 C154 90, 120 102, 96 98 C74 95, 60 90, 54 83 Z" fill="#e53935"/>
+            <path d="M54 83 C72 98, 116 101, 146 70" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
+            <circle cx="52" cy="86" r="13" fill="#fff"/>
+
+            <!-- Eyes -->
+            <circle class="eye" cx="84" cy="88" r="5" fill="#222"/>
+            <circle class="eye" cx="114" cy="88" r="5" fill="#222"/>
+
+            <!-- Nose -->
+            <ellipse cx="99" cy="104" rx="10" ry="8" fill="#f2a07b"/>
+
+            <!-- Beard -->
+            <path d="M70 104 C68 150, 130 150, 130 108 C130 100, 116 104, 99 108 C82 104, 72 98, 70 104 Z"
+                fill="#fff" stroke="#eee" stroke-width="3"/>
+        </svg>
+    </div>
+
+
+
+
     
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
@@ -119,6 +157,7 @@
             emailjs.init("7-iJou_mtFeypOg1K");
         })();
     </script>
+    <script src="./js/santaVisitor.js"></script>
     <script src="./js/swiper-bundle.min.js"></script>
     <script src="./data/data.js"></script>
     <script src="./data/reviews.js"></script>

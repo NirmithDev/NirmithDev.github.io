@@ -1,0 +1,76 @@
+/* Santa container */
+#santa-visitor{
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+
+  /* slide + orientation vars */
+  transform:
+    translate(var(--sx, 0px), var(--sy, 0px))
+    rotate(var(--rot, 0deg))
+    scaleX(var(--flipx, 1))
+    rotate(var(--tilt, 0deg))
+    scale(0.92);
+
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+/* Visible */
+#santa-visitor.show{
+  opacity: 1;
+  transform:
+    translate(0px, 0px)
+    rotate(var(--rot, 0deg))
+    scaleX(var(--flipx, 1))
+    rotate(var(--tilt, 0deg))
+    scale(1);
+}
+
+/* SVG sizing + remove inline padding */
+#santa-visitor .santa-svg{
+  width: 130px;
+  height: 130px;
+  display: block;        /* removes inline SVG whitespace */
+  overflow: visible;
+}
+
+/* Hands */
+#santa-visitor .hand{
+  fill: #ffffff;
+  stroke: rgba(0,0,0,0.12);
+  stroke-width: 2;
+}
+
+/* Grip animation (single grip only) */
+#santa-visitor .grip{
+  animation: grip 1.4s ease-in-out infinite;
+}
+
+@keyframes grip{
+  0%,100%{ transform: scale(1); }
+  50%{ transform: scale(1.12); }
+}
+
+/* Wave hand — moved farther from face */
+#santa-visitor .wave-hand{
+  transform-origin: 0px 0px;
+  animation: wave 1.2s ease-in-out infinite;
+}
+
+@keyframes wave{
+  0%,100%{ transform: translate(170px, 102px) rotate(-6deg); }
+  50%{    transform: translate(170px, 102px) rotate(18deg); }
+}
+
+/* Blink animation */
+#santa-visitor .eye{
+  transform-origin: center;
+  animation: blink 4.5s infinite;
+}
+
+@keyframes blink{
+  0%, 92%, 100% { transform: scaleY(1); }
+  93%, 95%      { transform: scaleY(0.15); }
+  96%           { transform: scaleY(1); }
+}
