@@ -43,14 +43,6 @@ const projects = [
         featured: true,
     },
     {
-        name: "Captive Chat",
-        category: "fullstack",
-        image: "C-Chat.png",
-        url: "https://github.com/HH2-0/Captive-Chat",
-        summary: "A chat web app with Google sign-in.",
-        featured: true,
-    },
-    {
         name: "Blog Site",
         category: "fullstack",
         image: "BlogSite.png",
