@@ -18,6 +18,15 @@ const projects = [
         featured: true,
     },
     {
+        name: "StepFree Toronto",
+        id: "stepfree-toronto",
+        category: "fullstack",
+        image: "stepfree-toronto.png",
+        url: "https://github.com/NirmithDev/stepfree-toronto",
+        summary: "A step-free TTC trip planner covering 109 rail stops, with elevator outage replay and live alerts for watched trips.",
+        featured: true,
+    },
+    {
         name: "MovieDB",
         category: "fullstack",
         image: "movieDb.png",
