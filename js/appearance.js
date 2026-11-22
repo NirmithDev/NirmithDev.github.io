@@ -29,6 +29,50 @@
         root.classList.toggle("christmas-season", month >= 11 || christmasPreview);
     }
 
+    function setUpSanta() {
+        const santa = document.createElement("div");
+        santa.className = "santa-visit";
+        santa.setAttribute("aria-hidden", "true");
+        santa.innerHTML = `
+            <span class="santa-coat"></span>
+            <span class="santa-face"><span class="santa-eyes"></span></span>
+            <span class="santa-beard"></span>
+            <span class="santa-moustache"></span>
+            <span class="santa-nose"></span>
+            <span class="santa-hat"></span>
+            <span class="santa-mitten"></span>
+        `;
+        document.body.append(santa);
+        let santaTimer;
+        let firstVisit = true;
+
+        function scheduleSanta() {
+            clearTimeout(santaTimer);
+            santaTimer = undefined;
+            santa.classList.remove("is-visiting");
+            if (document.hidden || !root.classList.contains("christmas-season")) return;
+
+            const [minimum, spread] = christmasPreview
+                ? [800, 0]
+                : firstVisit ? [12000, 16000] : [45000, 45000];
+            santaTimer = setTimeout(() => {
+                firstVisit = false;
+                santa.classList.add("is-visiting");
+                santaTimer = christmasPreview ? undefined : setTimeout(scheduleSanta, 4200);
+            }, minimum + Math.random() * spread);
+        }
+
+        document.addEventListener("visibilitychange", () => {
+            updateSeason();
+            scheduleSanta();
+        });
+        window.addEventListener("focus", () => {
+            if (!root.classList.contains("christmas-season") ||
+                (!santaTimer && !santa.classList.contains("is-visiting"))) scheduleSanta();
+        });
+        scheduleSanta();
+    }
+
     root.dataset.theme = readPreference("theme") === "light" ? "light" : "dark";
     updateSeason();
     window.addEventListener("focus", updateSeason);
@@ -76,6 +120,7 @@
         });
         updateTheme();
         appearance.hidden = false;
+        setUpSanta();
 
         const scene = document.querySelector(".portrait-scene");
         if (!scene) return;
@@ -122,35 +167,5 @@
             resetPointerTilt();
         });
         sceneControls.hidden = false;
-
-        const santa = document.querySelector(".santa-visit");
-        let santaTimer;
-        let firstVisit = true;
-
-        function scheduleSanta() {
-            clearTimeout(santaTimer);
-            santaTimer = undefined;
-            santa.classList.remove("is-visiting");
-            if (document.hidden || !root.classList.contains("christmas-season")) return;
-
-            const [minimum, spread] = christmasPreview
-                ? [800, 0]
-                : firstVisit ? [12000, 16000] : [45000, 45000];
-            santaTimer = setTimeout(() => {
-                firstVisit = false;
-                santa.classList.add("is-visiting");
-                santaTimer = christmasPreview ? undefined : setTimeout(scheduleSanta, 4200);
-            }, minimum + Math.random() * spread);
-        }
-
-        document.addEventListener("visibilitychange", () => {
-            updateSeason();
-            scheduleSanta();
-        });
-        window.addEventListener("focus", () => {
-            if (!root.classList.contains("christmas-season") ||
-                (!santaTimer && !santa.classList.contains("is-visiting"))) scheduleSanta();
-        });
-        scheduleSanta();
     });
 })();
