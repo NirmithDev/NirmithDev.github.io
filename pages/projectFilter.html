@@ -1,75 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nirmith Portfolio</title>
-    <link rel="stylesheet" href="../css/style2.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Browse Nirmith D’Almeida’s projects and certifications.">
+    <meta name="theme-color" content="#151618">
+    <title>Projects &amp; Certifications | Nirmith D’Almeida</title>
+    <link rel="icon" href="../img/logo.png" type="image/png">
+    <script src="../js/appearance.js"></script>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/projectFile.css">
-    <link rel="stylesheet" href="../css/style3.css">
-    <link rel="stylesheet" href="../css/snowAnimation.css">
-    <link rel="stylesheet" href="css/santaClaus.css">
-    <link rel="icon" href="../img/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/swiper-bundle.min.css">
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-
+    <script defer src="../data/data.js"></script>
+    <script defer src="../js/projectsFilter.js"></script>
 </head>
-<body>
-    <div id="preloader">
-    </div>
-    <a href="#home" class="scroll-top">
-        <i class="bx bx-up-arrow-alt"></i>
-    </a>
-    <header>
-        <ul class="lightrope" id="lightropeContainer">
-        </ul>
-        <div class="nav container" style="max-width: 100%;">
-            <a href="../index.html" class="logo">Nirmith</a>
-            <ul style="margin-top: 20px;">
-                <li><a href="../index.html" class="nav-link">Home</a></li>
-            </ul>
-        </div>
-    </header>   
-    <canvas id="snowCanvas"></canvas>
-    <section class="portfolio" id="projects" style=" padding-top: 4rem;">
-        <div class="containers">
-            <div class="row">
-                <div class="section-title text-center">
-                    <h1>Project Filter</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="filter-buttons">
-                    <ul id="filter-btns" class="filter-btns">
-                        <li id="all" class="all" class="active" data-target="all">ALL</li>
-                        <li id="front" class="front" data-target="Html_css">FRONTEND</li>
-                        <li id="full" class="full" data-target="Javascript">FULL STACK</li>
-                        <li id="python" class="python" data-target="Python">PYTHON</li>
-                        <li id="certs" class="certs" data-target="Certs">CERTIFICATIONS</li>
-                        <li id="oop" class="oop" data-target="">OOP</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row" style = "height: 75vh;overflow-x: auto;margin: 0 auto;">
-                <div class="portfolio-gallery" id="portfolio-gallery" style="background-color: #9e9e9ec7;border-radius: 10px;padding: 20px;">
-                </div>
+<body id="home">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <div class="shell header-inner">
+            <a class="wordmark" href="../index.html"><span class="monogram" aria-hidden="true">nd.</span><span>Nirmith D’Almeida</span></a>
+            <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="main-nav" hidden>
+                <span aria-hidden="true"></span>
+            </button>
+            <nav class="nav" id="main-nav" aria-label="Main navigation">
+                <a href="projectFilter.html" aria-current="page">Work</a>
+                <a href="experience.html">Experience</a>
+                <a href="../index.html#about">About</a>
+                <a href="../Nirmith_CV.pdf">Résumé</a>
+                <a class="nav-contact" href="../index.html#contact">Contact</a>
+            </nav>
+            <div class="appearance" role="group" aria-label="Appearance" hidden>
+                <button class="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="true">
+                    <span class="theme-icon" aria-hidden="true"></span>
+                </button>
             </div>
         </div>
-    </section>
-    <img
-    id="santa-visitor"
-    src="./img/santa.png"
-    alt="Santa"
-    aria-hidden="true"
-    />
-    <script src="./js/santaVisitor.js"></script>
-    <script src="../js/swiper-bundle.min.js"></script>
-    <script src="../data/data.js"></script>
-    <script src="../js/projectsFilter.js"></script>
-    <script src="../js/lightrope.js"></script>
-    <script src="../js/snow.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    </header>
+    <main class="shell archive" id="main">
+        <div class="archive-intro">
+            <p class="eyebrow">Portfolio</p>
+            <h1>Projects &amp;<br> certifications<span class="accent-dot">.</span></h1>
+        </div>
+        <div class="archive-tools">
+            <div class="filters" id="filter-btns" role="group" aria-label="Filter by category" hidden></div>
+            <p class="results" id="project-count" role="status"></p>
+        </div>
+        <div class="project-grid" id="portfolio-gallery"></div>
+        <noscript><p>Enable JavaScript to use the archive, or browse my code on <a href="https://github.com/NirmithDev">GitHub</a>.</p></noscript>
+    </main>
+    <footer class="site-footer">
+        <div class="shell footer-inner">
+            <a class="wordmark" href="../index.html"><span class="monogram" aria-hidden="true">nd.</span><span>Nirmith D’Almeida</span></a>
+            <nav aria-label="Profiles">
+                <a href="https://github.com/NirmithDev">GitHub</a>
+                <a href="https://www.linkedin.com/in/nirmith-dalmeida-81ab2418a/">LinkedIn</a>
+                <a href="https://stackoverflow.com/users/15980907/jay">Stack Overflow</a>
+            </nav>
+        </div>
+    </footer>
+    <a class="back-to-top" href="#home" aria-label="Back to top" hidden><span aria-hidden="true">↑</span></a>
 </body>
 </html>

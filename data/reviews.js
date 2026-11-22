@@ -1,5 +1,15 @@
 let reviews =[
     {
+        "Name": "Pranav Khodhot",
+        "Testimonial": [
+            "It was a pleasure working with Nirmith at Method and seeing firsthand how much value he brought to our team. As someone working in QA, I really valued having a teammate who was approachable, dependable, and always ready to lend a hand. He’s a skilled developer with strong problem-solving abilities and a great understanding of the product, which made him a valuable person to collaborate with. Whether we were working through bugs, discussing issues, or figuring out solutions together, he consistently brought strong technical insight and a solution-oriented mindset to the team.",
+            "One thing I especially appreciated about Nirmith was how supportive he was of the people around him. He was always willing to take the time to help whenever something came up, which made a real difference in our day-to-day work as a team. His willingness to collaborate and help others is something I truly respect, and I have no doubt he would be a valuable addition to any team. I’m glad I had the opportunity to work with him and wish him nothing but success in the future!"
+        ],
+        "Organization": "Method CRM",
+        "Position": "Former QA Engineer",
+        "Date": "2026-10-26"
+    },
+    {
         "Name": "Nick Donato",
         "Testimonial":"Nirmith was a very positive addition to the team as an intern. He took ownership of his tasks such as reviewing the automation failures and correcting them. He maintained a positive attitude throughout his term. He was provided with lots of training and feedback from the other test engineers and accepted and implemented their feedback into his work very well.  Overall, Nirmith did an excellent job during his internship at Ceridian as an Automation Test Engineer Intern.",
         "LinkedIn":"https://www.linkedin.com/in/nick-donato-508975a5/",

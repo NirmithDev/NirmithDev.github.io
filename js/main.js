@@ -1,137 +1,168 @@
-let menu = document.querySelector('.menu-icon')
-let navBar = document.querySelector('.navbar')
+const reviewTrack = document.querySelector("#reviews");
 
-let getReview = reviews
-let header = document.querySelector('header')
-let scrollTop = document.querySelector('.scroll-top')
+for (const review of reviews) {
+    const figure = document.createElement("figure");
+    figure.className = "review";
 
-let spinnerWrapper = document.getElementById("preloader");
-window.addEventListener("load", function () {
-    spinnerWrapper.style.display = "none";
-    menu.onclick = () =>{
-        menu.classList.toggle('move');
-        navBar.classList.toggle('open-menu')
+    const paragraphs = [review.Testimonial].flat();
+    const quote = document.createElement("blockquote");
+    for (const text of paragraphs) {
+        const paragraph = document.createElement("p");
+        paragraph.textContent = text;
+        quote.append(paragraph);
     }
-    this.window.onscroll = () =>{
-        menu.classList.remove('move');
-        navBar.classList.remove('open-menu')
-    }
-    
 
-    /*testimonials*/
-    var swiper=new Swiper(".reviews-content",{
-        spaceBetween:30,
-        centeredSlides:true,
-        autoplay:{
-            delay:5000,
-            disableonInteraction:true,
-        },
-        pagination:{
-            el:" .swiper-pagination",
-            clickable:true,
-        },
+    const words = paragraphs.join(" ").split(/\s+/);
+    const excerpt = document.createElement("blockquote");
+    excerpt.className = "review-excerpt";
+    excerpt.textContent = words.slice(0, 34).join(" ") + "…";
+
+    const details = document.createElement("details");
+    const summary = document.createElement("summary");
+    summary.textContent = "Read full recommendation";
+    details.append(summary, quote);
+    details.addEventListener("toggle", () => {
+        excerpt.hidden = details.open;
+        summary.textContent = details.open ? "Show less" : "Read full recommendation";
     });
-    getReviews()
-    validate()
-    this.window.addEventListener('scroll',function(){
-        header.classList.toggle("header-active",this.window.scrollY>0)
-    })
-    this.window.addEventListener('scroll',function(){
-        scrollTop.classList.toggle("scroll-active",this.window.scrollY>=300)
-    })
-})
 
-function validate(){
-    let name=document.querySelector('.name')
-    let email= document.querySelector('.email')
-    let msg=document.querySelector('.message')
-    let send = document.querySelector('.send-btn')
+    const attribution = document.createElement("figcaption");
+    const author = document.createElement(review.LinkedIn ? "a" : "strong");
+    if (review.LinkedIn) author.href = review.LinkedIn;
+    author.textContent = review.Name;
 
-    send.addEventListener('click',(e)=>{
-        e.preventDefault();
-        if(name.value==""|| email.value=="" || msg.value==""){
-            emptyerror();
-        }
-        else{
-            sendmail(name.value,email.value,msg.value);
-            success();
-            name.value=''
-            email.value=''
-            msg.value=''
-        }
-    })
+    const role = document.createElement("span");
+    role.textContent = review.Position + ", " + review.Organization;
+
+    attribution.append(author, role);
+    if (review.Date) {
+        const date = document.createElement("time");
+        date.dateTime = review.Date;
+        date.textContent = new Intl.DateTimeFormat("en-CA", { dateStyle: "long", timeZone: "UTC" })
+            .format(new Date(review.Date));
+        attribution.append(date);
+    }
+    if (words.length > 34) figure.append(excerpt, details);
+    else figure.append(quote);
+    figure.append(attribution);
+    reviewTrack.append(figure);
 }
 
-function sendmail(name,email,msg){
-    emailjs.send("service_o5r4fdj","template_7faqv6i",{
-        from_name: email,
-        to_name: "Nirmith",
-        message: msg,
+const reviewControls = document.querySelector(".review-controls");
+const previousReview = document.querySelector("#review-previous");
+const nextReview = document.querySelector("#review-next");
+const autoplayButton = document.querySelector("#review-autoplay");
+const testimonials = document.querySelector("#testimonials");
+const reducedReviewMotion = matchMedia("(prefers-reduced-motion: reduce)");
+let autoplay = !reducedReviewMotion.matches;
+
+function updateReviewButtons() {
+    previousReview.disabled = reviewTrack.scrollLeft <= 1;
+    nextReview.disabled = reviewTrack.scrollLeft + reviewTrack.clientWidth >= reviewTrack.scrollWidth - 1;
+}
+
+function scrollReview(direction) {
+    const [first, second] = reviewTrack.children;
+    reviewTrack.scrollBy({ left: direction * (second.offsetLeft - first.offsetLeft) });
+}
+
+previousReview.addEventListener("click", () => scrollReview(-1));
+nextReview.addEventListener("click", () => scrollReview(1));
+reviewTrack.addEventListener("scroll", updateReviewButtons, { passive: true });
+window.addEventListener("resize", updateReviewButtons);
+reviewControls.hidden = reviewTrack.childElementCount < 2;
+updateReviewButtons();
+
+function updateAutoplayButton() {
+    autoplayButton.textContent = autoplay ? "Pause auto-scroll" : "Start auto-scroll";
+}
+
+autoplayButton.addEventListener("click", () => {
+    autoplay = !autoplay;
+    updateAutoplayButton();
+});
+reducedReviewMotion.addEventListener("change", event => {
+    if (event.matches) {
+        autoplay = false;
+        updateAutoplayButton();
+    }
+});
+updateAutoplayButton();
+
+let reviewsInView = false;
+new IntersectionObserver(([entry]) => {
+    reviewsInView = entry.intersectionRatio >= 0.5;
+}, { threshold: 0.5 }).observe(reviewTrack);
+window.setInterval(() => {
+    if (!autoplay || !reviewsInView || document.hidden || reviewControls.hidden ||
+        testimonials.matches(":hover, :focus-within") || reviewTrack.querySelector("details[open]")) return;
+
+    if (nextReview.disabled) reviewTrack.scrollTo({ left: 0, behavior: "instant" });
+    else scrollReview(1);
+}, 7000);
+
+const contactForm = document.querySelector("#contact-form");
+const sendButton = contactForm.querySelector("button[type=submit]");
+const formStatus = contactForm.querySelector(".form-status");
+
+function loadEmailClient() {
+    if (window.emailjs) return Promise.resolve(window.emailjs);
+
+    return new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = "https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js";
+        script.addEventListener("load", () => {
+            if (window.emailjs) resolve(window.emailjs);
+            else reject(new Error("Email client did not initialize."));
+        }, { once: true });
+        script.addEventListener("error", () => {
+            script.remove();
+            reject(new Error("Email client could not be loaded."));
+        }, { once: true });
+        document.head.append(script);
     });
 }
 
-function success(){
-    swal({
-        title:"Success",
-        text:"Your email has been sent and is on the way!🛫",
-        icon:"success",
-    })
+contactForm.addEventListener("submit", async event => {
+    event.preventDefault();
+    if (sendButton.disabled) return;
 
-}
+    const fields = new FormData(contactForm);
+    const name = fields.get("name").trim();
+    const email = fields.get("email").trim();
+    const message = fields.get("message").trim();
 
-function emptyerror(){
-    swal({
-        title:"Oh no......",
-        text: "Fields cannot be empty!",
-        icon: "error",
-    })
-}
-
-function getReviews(){
-    let at = document.getElementById("swip")
-    re=''
-    for(i=0;i<getReview.length;i++){
-        if(getReview[i].Mail==null){
-            re+=`
-            <div class="swiper-slide">
-                <div class="review-box">
-                    <i class="bx bxs-quote-right"></i>
-                    <p class="review-text">
-                        ${getReview[i].Testimonial}
-                    </p>
-                    <div class="review-profile">
-                        <h2>${getReview[i].Name}</h2>
-                        <span>${getReview[i].Organization} - ${getReview[i].Position}</span>
-                        <div class="social" style="color: white;">
-                            <a href="${getReview[i].LinkedIn}"><i class='bx bxl-linkedin'></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                `
-        }else{
-            re+=`
-                <div class="swiper-slide">
-                    <div class="review-box">
-                        <i class="bx bxs-quote-right"></i>
-                        <p class="review-text">
-                            ${getReview[i].Testimonial}
-                        </p>
-                        <div class="review-profile">
-                            <h2>${getReview[i].Name}</h2>
-                            <span>${getReview[i].Organization} - ${getReview[i].Position}</span>
-                            <div class="social" style="color: white;">
-                                <a href="${getReview[i].LinkedIn}"><i class='bx bxl-linkedin'></i></a>
-                                <a href="mailto:${getReview[i].Mail}"><i class='bx bxs-envelope'></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    `
-        }
-        
+    if (!name || !message) {
+        formStatus.dataset.state = "error";
+        formStatus.textContent = "Enter your name and a message.";
+        contactForm.elements.namedItem(!name ? "name" : "message").focus();
+        return;
     }
-    at.innerHTML=re
-}
 
+    sendButton.disabled = true;
+    formStatus.dataset.state = "sending";
+    formStatus.textContent = "Sending your message…";
 
+    try {
+        const client = await loadEmailClient();
+        await client.send("service_o5r4fdj", "template_7faqv6i", {
+            from_name: email,
+            from_email: email,
+            reply_to: email,
+            sender_name: name,
+            to_name: "Nirmith",
+            message: name + "\n\n" + message,
+        }, "7-iJou_mtFeypOg1K");
+
+        contactForm.reset();
+        formStatus.dataset.state = "success";
+        formStatus.textContent = "Your message was sent.";
+    } catch {
+        formStatus.dataset.state = "error";
+        formStatus.textContent = "Your message couldn’t be sent. Try again or use the email link.";
+    } finally {
+        sendButton.disabled = false;
+    }
+});
+
+contactForm.hidden = false;

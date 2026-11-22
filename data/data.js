@@ -1,80 +1,104 @@
-let datas=[
+const projectCategories = {
+    frontend: "Frontend",
+    fullstack: "Full stack",
+    python: "Python",
+    oop: "Object-oriented programming",
+    certification: "Certifications",
+};
+
+const projects = [
     {
-        "iName":"MovieDB",
-        "iType":["Full_Stack","All"],
-        "iLink":"https://github.com/NirmithDev/COMP2406-MOVIE-DB",
-        "iImage":"../img/movieDb.png"
+        name: "Pitwall",
+        id: "pitwall",
+        category: "fullstack",
+        url: "https://github.com/NirmithDev/pitwall",
+        summary: "A motorsport replay lab for exploring historical races, live-style timing, and tyre strategy.",
+        status: "In development",
+        spotlight: true,
+        featured: true,
     },
     {
-        "iName":"Blog Site",
-        "iType":["Full_Stack","All"],
-        "iLink":"https://github.com/Circus-Group-Project/TheBrosBlogSite",
-        "iImage":"../img/BlogSite.png"
+        name: "MovieDB",
+        category: "fullstack",
+        image: "movieDb.png",
+        url: "https://github.com/NirmithDev/COMP2406-MOVIE-DB",
+        summary: "A movie catalog with browsing, movie details, and user accounts.",
+        featured: true,
     },
     {
-        "iName":"Report Generator",
-        "iType":["OOP","All"],
-        "iLink":"https://github.com/NirmithDev/Report-Generator",
-        "iImage":"../img/reportGen.png"
+        name: "Store Locator",
+        category: "frontend",
+        image: "stores.png",
+        url: "https://github.com/NirmithDev/StoreLocator",
+        summary: "An interactive map for finding and exploring store locations.",
+        featured: true,
     },
     {
-        "iName":"Library Management Sys",
-        "iType":["Python","All"],
-        "iLink":"https://github.com/NirmithDev/3005-Project",
-        "iImage":"../img/LMSystem.png"
+        name: "Captive Chat",
+        category: "fullstack",
+        image: "C-Chat.png",
+        url: "https://github.com/HH2-0/Captive-Chat",
+        summary: "A chat web app with Google sign-in.",
+        featured: true,
     },
     {
-        "iName":"Front End Development Library",
-        "iType":["Certs","All"],
-        "iLink":"https://www.freecodecamp.org/certification/NirmithDAlmeida/front-end-development-libraries",
-        "iImage":"../img/certs4.png"
+        name: "Blog Site",
+        category: "fullstack",
+        image: "BlogSite.png",
+        url: "https://github.com/Circus-Group-Project/TheBrosBlogSite",
     },
     {
-        "iName":"JavaScript Algorithms",
-        "iType":["Certs","All"],
-        "iLink":"https://www.freecodecamp.org/certification/fcc520bbe1d-8ce5-4007-b31d-3fe885a52e10/javascript-algorithms-and-data-structures",
-        "iImage":"../img/certs.png"
+        name: "Report Generator",
+        category: "oop",
+        image: "reportGen.png",
+        url: "https://github.com/NirmithDev/Report-Generator",
     },
     {
-        "iName":"Responsive Web Design",
-        "iType":["Certs","All"],
-        "iLink":"https://www.freecodecamp.org/certification/fcc520bbe1d-8ce5-4007-b31d-3fe885a52e10/responsive-web-design",
-        "iImage":"../img/certs1.png"
+        name: "Library Management System",
+        category: "python",
+        image: "LMSystem.png",
+        url: "https://github.com/NirmithDev/3005-Project",
     },
     {
-        "iName":"UX Design Foundations",
-        "iType":["Certs","All"],
-        "iLink":"https://www.coursera.org/account/accomplishments/certificate/8XXXMS7TJUSH",
-        "iImage":"../img/certs2.png"
+        name: "Space Invader",
+        category: "python",
+        image: "invader.png",
+        url: "https://github.com/NirmithDev/Python-space-invader-game",
     },
     {
-        "iName":"Problem Solving",
-        "iType":["Certs","All"],
-        "iLink":"https://www.hackerrank.com/certificates/afe39d2d8a78",
-        "iImage":"../img/certs3.png"
+        name: "Personal Portfolio",
+        category: "frontend",
+        image: "portfolio.png",
+        url: "../index.html",
     },
     {
-        "iName":"Portfolio",
-        "iType":["Front_end","All"],
-        "iLink":"#",
-        "iImage":"../img/portfolio.png"
+        name: "Front End Development Libraries",
+        category: "certification",
+        image: "certs4.png",
+        url: "https://www.freecodecamp.org/certification/NirmithDAlmeida/front-end-development-libraries",
     },
     {
-        "iName":"StoreLocator",
-        "iType":["Front_end","All"],
-        "iLink":"https://github.com/NirmithDev/StoreLocator",
-        "iImage":"../img/stores.png"
+        name: "JavaScript Algorithms and Data Structures",
+        category: "certification",
+        image: "certs.png",
+        url: "https://www.freecodecamp.org/certification/fcc520bbe1d-8ce5-4007-b31d-3fe885a52e10/javascript-algorithms-and-data-structures",
     },
     {
-        "iName":"Space Invader",
-        "iType":["Python","All"],
-        "iLink":"https://github.com/NirmithDev/Python-space-invader-game",
-        "iImage":"../img/invader.png"
+        name: "Responsive Web Design",
+        category: "certification",
+        image: "certs1.png",
+        url: "https://www.freecodecamp.org/certification/fcc520bbe1d-8ce5-4007-b31d-3fe885a52e10/responsive-web-design",
     },
     {
-        "iName":"Captive Chat",
-        "iType":["Full_Stack","All"],
-        "iLink":"https://github.com/HH2-0/Captive-Chat",
-        "iImage":"../img/C-Chat.png"
+        name: "UX Design Foundations",
+        category: "certification",
+        image: "certs2.png",
+        url: "https://www.coursera.org/account/accomplishments/certificate/8XXXMS7TJUSH",
     },
-]
+    {
+        name: "Problem Solving",
+        category: "certification",
+        image: "certs3.png",
+        url: "https://www.hackerrank.com/certificates/afe39d2d8a78",
+    },
+];

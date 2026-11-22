@@ -1,9 +1,15 @@
-# portfolio
-My Personal Portfolio website with updated data and better UI and User Experience
+# Nirmith D’Almeida’s portfolio
 
-# status of website
-[![Netlify Status](https://api.netlify.com/api/v1/badges/599517df-1780-4fd6-adf5-f1e1110609fa/deploy-status)](https://app.netlify.com/sites/nirmithvictor/deploys)
+A static portfolio with selected work, testimonials, a résumé, and a filterable archive of projects and certifications.
 
-# Incoming New Features
-- Working on a Timeline version for Resume or a visual enhancement of resume and achievements
-- a way to change dynamically the css file for different seasons
+## Local preview
+
+From the repository root, run:
+
+```sh
+python -m http.server 4173 --bind 127.0.0.1
+```
+
+Open [the local preview](http://127.0.0.1:4173/). The site needs no build or dependency installation.
+
+Project details live in `data/data.js` and testimonials in `data/reviews.js`. To update the portrait, replace the image referenced by `index.html` and update its alt text and dimensions.
