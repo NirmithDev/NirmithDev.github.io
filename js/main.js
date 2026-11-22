@@ -56,9 +56,8 @@ const testimonials = document.querySelector("#testimonials");
 const reducedReviewMotion = matchMedia("(prefers-reduced-motion: reduce)");
 let autoplay = !reducedReviewMotion.matches;
 
-function updateReviewButtons() {
+function updatePreviousReview() {
     previousReview.disabled = reviewTrack.scrollLeft <= 1;
-    nextReview.disabled = reviewTrack.scrollLeft + reviewTrack.clientWidth >= reviewTrack.scrollWidth - 1;
 }
 
 function scrollReview(direction) {
@@ -66,12 +65,18 @@ function scrollReview(direction) {
     reviewTrack.scrollBy({ left: direction * (second.offsetLeft - first.offsetLeft) });
 }
 
+function advanceReview() {
+    const atEnd = reviewTrack.scrollLeft + reviewTrack.clientWidth >= reviewTrack.scrollWidth - 1;
+    if (atEnd) reviewTrack.scrollTo({ left: 0, behavior: "instant" });
+    else scrollReview(1);
+}
+
 previousReview.addEventListener("click", () => scrollReview(-1));
-nextReview.addEventListener("click", () => scrollReview(1));
-reviewTrack.addEventListener("scroll", updateReviewButtons, { passive: true });
-window.addEventListener("resize", updateReviewButtons);
+nextReview.addEventListener("click", advanceReview);
+reviewTrack.addEventListener("scroll", updatePreviousReview, { passive: true });
+window.addEventListener("resize", updatePreviousReview);
 reviewControls.hidden = reviewTrack.childElementCount < 2;
-updateReviewButtons();
+updatePreviousReview();
 
 function updateAutoplayButton() {
     autoplayButton.textContent = autoplay ? "Pause auto-scroll" : "Start auto-scroll";
@@ -97,13 +102,33 @@ window.setInterval(() => {
     if (!autoplay || !reviewsInView || document.hidden || reviewControls.hidden ||
         testimonials.matches(":hover, :focus-within") || reviewTrack.querySelector("details[open]")) return;
 
-    if (nextReview.disabled) reviewTrack.scrollTo({ left: 0, behavior: "instant" });
-    else scrollReview(1);
+    advanceReview();
 }, 7000);
 
 const contactForm = document.querySelector("#contact-form");
 const sendButton = contactForm.querySelector("button[type=submit]");
 const formStatus = contactForm.querySelector(".form-status");
+const draftLink = contactForm.querySelector(".email-draft");
+const contactEmail = document.querySelector("#contact-email").getAttribute("href");
+
+function readContactFields() {
+    const fields = new FormData(contactForm);
+    return {
+        name: fields.get("name").trim(),
+        email: fields.get("email").trim(),
+        message: fields.get("message").trim(),
+    };
+}
+
+function updateEmailDraft() {
+    if (draftLink.hidden) return;
+
+    const { name, email, message } = readContactFields();
+    const body = name + " <" + email + ">\n\n" + message;
+    draftLink.href = contactEmail + "?subject=Portfolio%20message&body=" + encodeURIComponent(body);
+}
+
+contactForm.addEventListener("input", updateEmailDraft);
 
 function loadEmailClient() {
     if (window.emailjs) return Promise.resolve(window.emailjs);
@@ -127,10 +152,7 @@ contactForm.addEventListener("submit", async event => {
     event.preventDefault();
     if (sendButton.disabled) return;
 
-    const fields = new FormData(contactForm);
-    const name = fields.get("name").trim();
-    const email = fields.get("email").trim();
-    const message = fields.get("message").trim();
+    const { name, email, message } = readContactFields();
 
     if (!name || !message) {
         formStatus.dataset.state = "error";
@@ -140,6 +162,7 @@ contactForm.addEventListener("submit", async event => {
     }
 
     sendButton.disabled = true;
+    draftLink.hidden = true;
     formStatus.dataset.state = "sending";
     formStatus.textContent = "Sending your message…";
 
@@ -157,9 +180,13 @@ contactForm.addEventListener("submit", async event => {
         contactForm.reset();
         formStatus.dataset.state = "success";
         formStatus.textContent = "Your message was sent.";
-    } catch {
+    } catch (error) {
         formStatus.dataset.state = "error";
-        formStatus.textContent = "Your message couldn’t be sent. Try again or use the email link.";
+        formStatus.textContent = error?.status === 412
+            ? "The email service couldn’t send your message. You can open it as a draft below."
+            : "Your message couldn’t be sent. Try again or open it as an email draft.";
+        draftLink.hidden = false;
+        updateEmailDraft();
     } finally {
         sendButton.disabled = false;
     }

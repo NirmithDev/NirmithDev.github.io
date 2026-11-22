@@ -145,9 +145,11 @@ button { cursor: pointer; }
 .menu-toggle span {
     width: 1.15rem;
     height: 2px;
+    border-radius: 1px;
     background: currentColor;
     box-shadow: 0 -.33rem currentColor, 0 .33rem currentColor;
 }
+.menu-toggle[aria-expanded="true"] { border-color: var(--focus); }
 .menu-toggle[aria-expanded="true"] span { box-shadow: none; transform: rotate(45deg); }
 .menu-toggle[aria-expanded="true"] span::after {
     display: block;
@@ -704,11 +706,24 @@ h2 { font-size: clamp(2.45rem, 5vw, 4.5rem); line-height: .98; letter-spacing: -
     .header-inner .nav {
         order: 1;
         width: 100%;
-        padding: .65rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: .25rem .45rem;
         border: 1px solid var(--line);
         border-radius: var(--radius);
         background: var(--surface);
     }
+    .header-inner .nav a {
+        display: flex;
+        align-items: center;
+        min-height: 2.75rem;
+        padding: .55rem .75rem;
+        border: 0;
+        border-radius: 0;
+    }
+    .header-inner .nav a + a { border-top: 1px solid var(--line); }
+    .header-inner .nav a:hover { background: var(--preview); }
     .hero { grid-template-columns: 1fr; }
     .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .review-track { grid-auto-columns: 100%; }

@@ -79,6 +79,7 @@
 
     document.addEventListener("DOMContentLoaded", () => {
         const menuToggle = document.querySelector(".menu-toggle");
+        const menuHeader = menuToggle.closest(".site-header");
         const nav = document.getElementById(menuToggle.getAttribute("aria-controls"));
         const menuIsOpen = () => menuToggle.getAttribute("aria-expanded") === "true";
         const closeMenu = () => menuToggle.setAttribute("aria-expanded", "false");
@@ -88,10 +89,16 @@
         nav.addEventListener("click", event => {
             if (event.target.closest("a")) closeMenu();
         });
-        menuToggle.closest(".site-header").addEventListener("keydown", event => {
+        menuHeader.addEventListener("keydown", event => {
             if (event.key !== "Escape" || !menuIsOpen() || !menuToggle.getClientRects().length) return;
             closeMenu();
             menuToggle.focus();
+        });
+        document.addEventListener("click", event => {
+            if (menuIsOpen() && !menuHeader.contains(event.target)) closeMenu();
+        });
+        menuHeader.addEventListener("focusout", event => {
+            if (menuIsOpen() && !menuHeader.contains(event.relatedTarget)) closeMenu();
         });
         menuToggle.hidden = false;
 
